@@ -1,9 +1,8 @@
 <?php
 // =================================================================================
-// RADAR: VERSÃO "ZERO FAIL" (VISUAL IDENTITY: CADU BARBOSA)
+// RADAR: VERSÃO "EXECUTIVE INTELLIGENCE" (GIT NATIVE + FALLBACK CARD)
 // =================================================================================
 
-// 1. Carrega Biblioteca (com fallback)
 if (file_exists('Parsedown.php')) {
     require_once 'Parsedown.php';
     $Parsedown = new Parsedown();
@@ -18,7 +17,7 @@ $site_config = [
     'external_links' => [
         'Site Oficial' => 'https://www.cadubarbosa.com.br',
         'Blog' => 'https://www.cadubarbosa.com.br/blog',
-        'LinkedIN' => 'https://www.linkedin.com/in/cbarbosa9/'
+        'LinkedIn' => 'https://www.linkedin.com/in/cbarbosa9/'
     ]
 ];
 
@@ -30,7 +29,6 @@ if ($files) {
     foreach ($files as $file) {
         $content = file_get_contents($file);
         
-        // Limpeza de codificação
         if (!mb_check_encoding($content, 'UTF-8')) {
             $content = mb_convert_encoding($content, 'UTF-8', 'ISO-8859-1');
         }
@@ -52,11 +50,11 @@ if ($files) {
 
             $posts[] = [
                 'id' => $id, 
-                'category' => $meta['category'] ?? 'Geral',
+                'category' => $meta['category'] ?? 'Briefing',
                 'title' => $meta['title'] ?? 'Sem Título',
                 'date' => $meta['date'] ?? '',
                 'author' => $meta['author'] ?? 'Radar',
-                'image' => $meta['image'] ?? '',
+                'image' => $meta['image'] ?? '', // Se vazio, aciona o Fallback
                 'excerpt' => $meta['excerpt'] ?? '',
                 'html_content' => $Parsedown->text($rawBody)
             ];
@@ -90,12 +88,12 @@ sort($categories);
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Roboto', 'sans-serif'], // Fonte principal agora é Roboto
+                        sans: ['Roboto', 'sans-serif'],
                         display: ['Roboto', 'sans-serif'],
                     },
                     colors: {
                         radar: {
-                            gold: '#D3A656', // RGB 211,166,86 Convertido
+                            gold: '#D3A656',
                             dark: '#0a0a0a',
                             card: '#121212',
                             text: '#f3f4f6',
@@ -107,16 +105,14 @@ sort($categories);
         }
     </script>
     <style>
-        /* Estilização Customizada */
         ::-webkit-scrollbar { width: 6px; background: #000; } 
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: #D3A656; }
 
-        /* Glassmorphism mais neutro/escuro */
         .glass-nav { 
             background: rgba(0, 0, 0, 0.85); 
             backdrop-filter: blur(12px); 
-            border-bottom: 1px solid rgba(211, 166, 86, 0.1); /* Borda Dourada Sutil */
+            border-bottom: 1px solid rgba(211, 166, 86, 0.1); 
         }
         
         .glass-card { 
@@ -128,11 +124,18 @@ sort($categories);
         
         .glass-card:hover { 
             transform: translateY(-4px); 
-            border-color: #D3A656; /* Borda Dourada no Hover */
+            border-color: #D3A656; 
             box-shadow: 0 10px 30px -10px rgba(211, 166, 86, 0.15);
         }
 
-        /* Tipografia do Conteúdo (Roboto) */
+        /* TEXTURA DO INTELLIGENCE CARD (CSS Puro) */
+        .tech-pattern {
+            background-color: #0F0F0F;
+            background-image: linear-gradient(rgba(211, 166, 86, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(211, 166, 86, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
         .prose p { color: #d1d5db; font-weight: 300; line-height: 1.8; margin-bottom: 1.5em; font-family: 'Roboto', sans-serif; }
         .prose h1, .prose h2, .prose h3 { color: #fff; font-weight: 700; margin-top: 1.5em; }
         .prose strong { color: #D3A656; font-weight: 700; }
@@ -195,19 +198,30 @@ sort($categories);
                 
                 <div class="relative aspect-[16/10] overflow-hidden bg-black">
                     <?php if($post['image']): ?>
-                    <img src="<?php echo $post['image']; ?>" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100">
+                        <img src="<?php echo $post['image']; ?>" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+                        <span class="absolute top-4 left-4 px-3 py-1 bg-radar-gold text-black text-[10px] font-bold uppercase tracking-wider shadow-lg"><?php echo $post['category']; ?></span>
+                    
                     <?php else: ?>
-                    <div class="w-full h-full flex items-center justify-center text-xs text-slate-600">NO IMAGE</div>
+                        <div class="w-full h-full tech-pattern flex flex-col justify-center p-8 border-b-2 border-radar-gold/50 group-hover:border-radar-gold transition-colors">
+                            <div class="absolute top-4 left-4 px-2 py-1 border border-radar-gold/30 text-radar-gold text-[9px] font-mono uppercase tracking-widest">
+                                CONFIDENTIAL // <?php echo $post['category']; ?>
+                            </div>
+                            <h3 class="text-xl font-bold text-white leading-tight opacity-90 group-hover:opacity-100 transition-opacity">
+                                <?php echo $post['title']; ?>
+                            </h3>
+                            <div class="mt-4 w-12 h-0.5 bg-radar-gold/50 group-hover:w-20 transition-all duration-500"></div>
+                        </div>
                     <?php endif; ?>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
-                    <span class="absolute top-4 left-4 px-3 py-1 bg-radar-gold text-black text-[10px] font-bold uppercase tracking-wider"><?php echo $post['category']; ?></span>
                 </div>
                 
                 <div class="p-8 flex-1 flex flex-col">
                     <div class="flex items-center gap-3 text-xs text-radar-muted mb-4 font-medium uppercase tracking-wider">
                         <span><?php echo $post['date']; ?></span><span class="text-radar-gold">•</span><span><?php echo $post['author']; ?></span>
                     </div>
+                    
                     <h2 class="text-2xl font-bold text-white mb-4 leading-tight group-hover:text-radar-gold transition-colors"><?php echo $post['title']; ?></h2>
+                    
                     <p class="text-sm text-gray-400 leading-relaxed mb-6 font-light line-clamp-3"><?php echo $post['excerpt']; ?></p>
                     <div class="mt-auto pt-6 border-t border-white/10 text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">Ler Insight <span class="text-radar-gold transition-transform group-hover:translate-x-1">→</span></div>
                 </div>
@@ -227,7 +241,7 @@ sort($categories);
         </div>
 
         <?php if (empty($posts)): ?>
-            <div class="text-center py-20 border border-dashed border-white/10"><p class="text-radar-muted">Nenhum post encontrado em /posts</p></div>
+            <div class="text-center py-20 border border-dashed border-white/10"><p class="text-radar-muted">Nenhum insight localizado em /posts</p></div>
         <?php endif; ?>
     </main>
 
@@ -257,12 +271,12 @@ sort($categories);
                             
                             <div class="mt-16 pt-8 border-t border-white/10 text-center">
                                 <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4">Compartilhar</p>
-                                <div class="flex justify-center gap-2">
-                                    <a id="btn-em" target="_blank" class="px-4 py-2 border border-white/10 rounded-none text-gray-300 hover:text-black hover:bg-radar-gold hover:border-radar-gold transition-all text-xs font-bold uppercase">E-Mail</a>
-                                    <a id="btn-wa" target="_blank" class="px-4 py-2 border border-white/10 rounded-none text-gray-300 hover:text-black hover:bg-radar-gold hover:border-radar-gold transition-all text-xs font-bold uppercase">WhatsApp</a>
-                                    <a id="btn-li" target="_blank" class="px-4 py-2 border border-white/10 rounded-none text-gray-300 hover:text-black hover:bg-radar-gold hover:border-radar-gold transition-all text-xs font-bold uppercase">LinkedIn</a>
-                                    <a id="btn-fb" target="_blank" class="px-4 py-2 border border-white/10 rounded-none text-gray-300 hover:text-black hover:bg-radar-gold hover:border-radar-gold transition-all text-xs font-bold uppercase">Facebook</a>
-                                    <a id="btn-tw" target="_blank" class="px-4 py-2 border border-white/10 rounded-none text-gray-300 hover:text-black hover:bg-radar-gold hover:border-radar-gold transition-all text-xs font-bold uppercase">X / Twitter</a>
+                                <div class="flex justify-center gap-2 flex-wrap">
+                                    <a id="btn-em" target="_blank" class="px-4 py-2 border border-white/10 rounded-none text-gray-300 hover:text-black hover:bg-radar-gold hover:border-radar-gold transition-all text-xs font-bold uppercase cursor-pointer">E-Mail</a>
+                                    <a id="btn-wa" target="_blank" class="px-4 py-2 border border-white/10 rounded-none text-gray-300 hover:text-black hover:bg-radar-gold hover:border-radar-gold transition-all text-xs font-bold uppercase cursor-pointer">WhatsApp</a>
+                                    <a id="btn-li" target="_blank" class="px-4 py-2 border border-white/10 rounded-none text-gray-300 hover:text-black hover:bg-radar-gold hover:border-radar-gold transition-all text-xs font-bold uppercase cursor-pointer">LinkedIn</a>
+                                    <a id="btn-fb" target="_blank" class="px-4 py-2 border border-white/10 rounded-none text-gray-300 hover:text-black hover:bg-radar-gold hover:border-radar-gold transition-all text-xs font-bold uppercase cursor-pointer">Facebook</a>
+                                    <a id="btn-tw" target="_blank" class="px-4 py-2 border border-white/10 rounded-none text-gray-300 hover:text-black hover:bg-radar-gold hover:border-radar-gold transition-all text-xs font-bold uppercase cursor-pointer">X / Twitter</a>
                                 </div>
                             </div>
                         </div>
@@ -272,34 +286,28 @@ sort($categories);
         </div>
     </div>
 
-<script>
+    <script>
         const modal = document.getElementById('modal');
         const backdrop = document.getElementById('modal-backdrop');
         const panel = document.getElementById('modal-panel');
         const body = document.body;
 
-        // 1. ABRIR POST (Com Deep Linking)
         function openPost(id) {
             const template = document.getElementById('template-' + id);
             if (!template) return;
 
-            // ATUALIZA URL DO NAVEGADOR (Sem recarregar)
-            // Cria uma URL única: radar.com.br/?id=abcde
             const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?id=' + id;
             window.history.pushState({path: newUrl}, '', newUrl);
 
-            // Extrai dados
             const content = template.content.querySelector('.hidden-data');
             const titleRaw = content.querySelector('.data-title').textContent;
             
-            // Preenche Visual
             document.getElementById('view-title').textContent = titleRaw;
             document.getElementById('view-category').textContent = content.querySelector('.data-category').textContent;
             document.getElementById('view-date').textContent = content.querySelector('.data-date').textContent;
             document.getElementById('view-author').textContent = content.querySelector('.data-author').textContent;
             document.getElementById('view-body').innerHTML = content.querySelector('.data-body').innerHTML;
 
-            // Imagem
             const imgUrl = content.querySelector('.data-image').textContent;
             const imgContainer = document.getElementById('area-img-container');
             const imgEl = document.getElementById('view-img');
@@ -311,7 +319,6 @@ sort($categories);
                 imgContainer.style.display = 'none';
             }
 
-            // GERA LINKS DE SHARE (Usando a newUrl específica)
             const shareUrl = encodeURIComponent(newUrl);
             const shareTitle = encodeURIComponent(titleRaw);
 
@@ -321,7 +328,6 @@ sort($categories);
             document.getElementById('btn-tw').href = `https://twitter.com/intent/tweet?text=${shareTitle}&url=${shareUrl}`;
             document.getElementById('btn-em').href = `mailto:?subject=${shareTitle}&body=${shareTitle}%0A%0ALeia%20aqui:%20${shareUrl}`;
 
-            // Abre Modal
             modal.classList.remove('hidden');
             body.style.overflow = 'hidden';
             
@@ -332,9 +338,7 @@ sort($categories);
             }, 10);
         }
 
-        // 2. FECHAR POST (Limpa URL)
         function closeModal() {
-            // Remove o ?id=... da URL voltando para a home limpa
             const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
             window.history.pushState({path: cleanUrl}, '', cleanUrl);
 
@@ -347,17 +351,14 @@ sort($categories);
             }, 300);
         }
 
-        // 3. AUTO-OPEN (Se alguém acessar pelo link direto)
         window.addEventListener('load', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const postId = urlParams.get('id');
             if (postId) {
-                // Pequeno delay para garantir que o DOM renderizou
                 setTimeout(() => openPost(postId), 100);
             }
         });
 
-        // Utilitários
         function filterPosts(cat) {
             document.querySelectorAll('.post-card').forEach(el => {
                 el.style.display = (cat === 'all' || el.dataset.category === cat) ? 'flex' : 'none';
@@ -373,7 +374,6 @@ sort($categories);
             });
         }
 
-        // Fechar com ESC ou Clique Fora
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
         backdrop.addEventListener('click', closeModal);
     </script>
