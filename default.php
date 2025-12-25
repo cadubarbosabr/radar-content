@@ -272,23 +272,34 @@ sort($categories);
         </div>
     </div>
 
-    <script>
+<script>
         const modal = document.getElementById('modal');
         const backdrop = document.getElementById('modal-backdrop');
         const panel = document.getElementById('modal-panel');
         const body = document.body;
 
+        // 1. ABRIR POST (Com Deep Linking)
         function openPost(id) {
             const template = document.getElementById('template-' + id);
             if (!template) return;
+
+            // ATUALIZA URL DO NAVEGADOR (Sem recarregar)
+            // Cria uma URL única: radar.com.br/?id=abcde
+            const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?id=' + id;
+            window.history.pushState({path: newUrl}, '', newUrl);
+
+            // Extrai dados
             const content = template.content.querySelector('.hidden-data');
+            const titleRaw = content.querySelector('.data-title').textContent;
             
-            document.getElementById('view-title').textContent = content.querySelector('.data-title').textContent;
+            // Preenche Visual
+            document.getElementById('view-title').textContent = titleRaw;
             document.getElementById('view-category').textContent = content.querySelector('.data-category').textContent;
             document.getElementById('view-date').textContent = content.querySelector('.data-date').textContent;
             document.getElementById('view-author').textContent = content.querySelector('.data-author').textContent;
             document.getElementById('view-body').innerHTML = content.querySelector('.data-body').innerHTML;
 
+            // Imagem
             const imgUrl = content.querySelector('.data-image').textContent;
             const imgContainer = document.getElementById('area-img-container');
             const imgEl = document.getElementById('view-img');
@@ -300,15 +311,17 @@ sort($categories);
                 imgContainer.style.display = 'none';
             }
 
-            const url = window.location.href;
-            const title = content.querySelector('.data-title').textContent;
-            document.getElementById('btn-em').href = `mailto:?subject=${encodeURIComponent(title)}&body=${url}`;
-            document.getElementById('btn-wa').href = `https://wa.me/?text=${encodeURIComponent(title)} ${url}`;
-            document.getElementById('btn-li').href = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
-            document.getElementById('btn-fb').href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-            document.getElementById('btn-tw').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${url}`;
-            
-            
+            // GERA LINKS DE SHARE (Usando a newUrl específica)
+            const shareUrl = encodeURIComponent(newUrl);
+            const shareTitle = encodeURIComponent(titleRaw);
+
+            document.getElementById('btn-wa').href = `https://wa.me/?text=${shareTitle}%20${shareUrl}`;
+            document.getElementById('btn-li').href = `https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`;
+            document.getElementById('btn-fb').href = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
+            document.getElementById('btn-tw').href = `https://twitter.com/intent/tweet?text=${shareTitle}&url=${shareUrl}`;
+            document.getElementById('btn-em').href = `mailto:?subject=${shareTitle}&body=${shareTitle}%0A%0ALeia%20aqui:%20${shareUrl}`;
+
+            // Abre Modal
             modal.classList.remove('hidden');
             body.style.overflow = 'hidden';
             
@@ -319,7 +332,12 @@ sort($categories);
             }, 10);
         }
 
+        // 2. FECHAR POST (Limpa URL)
         function closeModal() {
+            // Remove o ?id=... da URL voltando para a home limpa
+            const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+            window.history.pushState({path: cleanUrl}, '', cleanUrl);
+
             backdrop.classList.add('opacity-0');
             panel.classList.remove('opacity-100', 'scale-100');
             panel.classList.add('opacity-0', 'scale-95');
@@ -329,6 +347,17 @@ sort($categories);
             }, 300);
         }
 
+        // 3. AUTO-OPEN (Se alguém acessar pelo link direto)
+        window.addEventListener('load', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const postId = urlParams.get('id');
+            if (postId) {
+                // Pequeno delay para garantir que o DOM renderizou
+                setTimeout(() => openPost(postId), 100);
+            }
+        });
+
+        // Utilitários
         function filterPosts(cat) {
             document.querySelectorAll('.post-card').forEach(el => {
                 el.style.display = (cat === 'all' || el.dataset.category === cat) ? 'flex' : 'none';
@@ -343,6 +372,10 @@ sort($categories);
                 }
             });
         }
+
+        // Fechar com ESC ou Clique Fora
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+        backdrop.addEventListener('click', closeModal);
     </script>
 </body>
 </html>
