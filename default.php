@@ -15,10 +15,11 @@ if (file_exists('Parsedown.php')) {
 
 $site_config = [
     'title' => 'RADAR | Cadu Barbosa',
-    'subtitle' => 'Curadoria estratégica de conteúdo, tecnologia e inovação.',
+    'subtitle' => 'Curadoria estratégica de conteúdo, tecnologia e inovação. Sem riscos, só oportunidades.',
     'external_links' => [
         'Site Oficial' => 'https://www.cadubarbosa.com.br',
         'Blog' => 'https://www.cadubarbosa.com.br/blog'
+        'LinkedIN' => 'https://www.linkedin.com/in/cbarbosa9/'
     ]
 ];
 
@@ -143,7 +144,7 @@ sort($categories);
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-[10px] font-mono uppercase tracking-widest mb-6">
                 <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span></span> System Online
             </div>
-            <h1 class="text-4xl md:text-6xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400 mb-6">Intelligence & Signals</h1>
+            <h1 class="text-4xl md:text-6xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400 mb-6">Inteligência | Sinais | Ação</h1>
             <p class="text-lg text-radar-muted font-light max-w-2xl mx-auto"><?php echo $site_config['subtitle']; ?></p>
         </div>
 
