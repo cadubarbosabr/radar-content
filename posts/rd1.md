@@ -1,9 +1,3 @@
-# Agentic AI & The 2026 Talent Cliff
-
-**Briefing 25/12: Outlook 2026 das Big 4 aponta maturidade da IA Agêntica e prêmio salarial recorde para Soft Skills.**
-
-📅 Quinta-feira, 25 de dezembro de 2025
-
 ---
 
 ## 💼 Business Intelligence
@@ -65,6 +59,3 @@
 
 
 ---
-
-> "A cultura come a estratégia no café da manhã, mas a tecnologia está comendo a burocracia no almoço. O diferencial de 2026 não é ter IA, é ter gente que saiba perguntar a ela."
-> — *Adaptado de Peter Drucker (Contexto Moderno)*
