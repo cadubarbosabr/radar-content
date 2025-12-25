@@ -18,7 +18,7 @@ $site_config = [
     'subtitle' => 'Curadoria estratégica de conteúdo, tecnologia e inovação. Sem riscos, só oportunidades.',
     'external_links' => [
         'Site Oficial' => 'https://www.cadubarbosa.com.br',
-        'Blog' => 'https://www.cadubarbosa.com.br/blog'
+        'Blog' => 'https://www.cadubarbosa.com.br/blog',
         'LinkedIN' => 'https://www.linkedin.com/in/cbarbosa9/'
     ]
 ];
