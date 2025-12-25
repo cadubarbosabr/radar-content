@@ -1,6 +1,6 @@
 <?php
 // =================================================================================
-// ENGINE MARKDOWN PARA PHP (RADAR ELITE VERSION - FIX 1.1)
+// ENGINE RADAR ELITE (UTF-8 SAFE VERSION)
 // =================================================================================
 
 require_once 'Parsedown.php'; 
@@ -15,14 +15,21 @@ $site_config = [
     ]
 ];
 
-// Lógica de Leitura de Posts
+// Lógica de Leitura com Limpeza de Codificação
 function getPosts() {
     $files = glob("posts/*.md");
     $posts = [];
     $Parsedown = new Parsedown();
 
     foreach ($files as $file) {
+        // Leitura Binária Segura
         $content = file_get_contents($file);
+        
+        // FORÇA BRUTA: Converte tudo para UTF-8 se não for
+        if (!mb_check_encoding($content, 'UTF-8')) {
+            $content = mb_convert_encoding($content, 'UTF-8', 'ISO-8859-1');
+        }
+
         $pattern = "/^---\s*\r?\n(.*?)\r?\n---\s*\r?\n(.*)$/s";
         
         if (preg_match($pattern, $content, $matches)) {
@@ -33,7 +40,8 @@ function getPosts() {
             foreach ($lines as $line) {
                 if (strpos($line, ':') !== false) {
                     list($key, $value) = explode(':', $line, 2);
-                    $meta[trim($key)] = trim($value);
+                    // Remove aspas extras que o usuário possa ter colocado
+                    $meta[trim($key)] = trim(str_replace(['"', "'"], '', trim($value)));
                 }
             }
             $posts[] = [
@@ -48,19 +56,23 @@ function getPosts() {
             ];
         }
     }
-    // Ordenação por Data (Mais recente primeiro)
+    
     usort($posts, function($a, $b) {
-        // Tenta converter datas portuguesas/inglesas para timestamp
         $dateA = strtotime(str_replace('/', '-', $a['date']));
         $dateB = strtotime(str_replace('/', '-', $b['date']));
         return $dateB - $dateA;
     });
+    
     return $posts;
 }
 
 $posts = getPosts();
 $categories = !empty($posts) ? array_unique(array_column($posts, 'category')) : [];
 sort($categories);
+
+// JSON SAFE ENCODE
+$json_posts = json_encode($posts, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_INVALID_UTF8_IGNORE);
+$json_error = json_last_error_msg();
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
@@ -71,52 +83,25 @@ sort($categories);
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
-    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                        display: ['Space Grotesk', 'sans-serif'],
-                    },
-                    colors: {
-                        radar: {
-                            bg: '#0B0F19',
-                            card: '#151B2B',
-                            border: '#2A3441',
-                            accent: '#6366f1',
-                            glow: '#818cf8',
-                            text: '#e2e8f0',
-                            muted: '#94a3b8'
-                        }
-                    },
-                    animation: {
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    }
+                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'], display: ['Space Grotesk', 'sans-serif'] },
+                    colors: { radar: { bg: '#0B0F19', card: '#151B2B', border: '#2A3441', accent: '#6366f1', glow: '#818cf8', text: '#e2e8f0', muted: '#94a3b8' } },
+                    animation: { 'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite' }
                 }
             }
         }
     </script>
     <style>
-        .bg-grid-pattern {
-            background-size: 40px 40px;
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            mask-image: radial-gradient(circle at center, black 40%, transparent 100%); 
-            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
-        }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #0B0F19; }
-        ::-webkit-scrollbar-thumb { background: #2A3441; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #6366f1; }
-
+        .bg-grid-pattern { background-size: 40px 40px; background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px); mask-image: radial-gradient(circle at center, black 40%, transparent 100%); -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%); }
+        ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #0B0F19; } ::-webkit-scrollbar-thumb { background: #2A3441; border-radius: 3px; } ::-webkit-scrollbar-thumb:hover { background: #6366f1; }
         .glass-nav { background: rgba(11, 15, 25, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
         .glass-card { background: rgba(21, 27, 43, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         .glass-card:hover { transform: translateY(-4px); border-color: rgba(99, 102, 241, 0.4); box-shadow: 0 20px 40px -10px rgba(99, 102, 241, 0.15); }
-
         .prose p { margin-bottom: 1.75em; line-height: 1.85; color: #cbd5e1; font-size: 1.125rem; font-weight: 300; }
         .prose h1, .prose h2, .prose h3 { color: #f8fafc; font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.02em; margin-top: 2em; }
         .prose strong { color: #fff; font-weight: 600; }
@@ -160,7 +145,6 @@ sort($categories);
                         <span class="text-[10px] font-mono text-radar-accent uppercase tracking-[0.2em] leading-none mt-1">Cadu Barbosa</span>
                     </div>
                 </div>
-
                 <nav class="flex flex-wrap justify-center gap-2 bg-white/5 p-1 rounded-full backdrop-blur-sm border border-white/5">
                     <button onclick="filterPosts('all')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wide transition-all duration-300 bg-radar-accent text-white shadow-lg shadow-indigo-500/20" data-filter="all">All Signals</button>
                     <?php foreach ($categories as $cat): ?>
@@ -179,28 +163,33 @@ sort($categories);
             </div>
             <h1 class="text-4xl md:text-6xl font-display font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-slate-400">Intelligence & Signals</h1>
             <p class="text-lg md:text-xl text-radar-muted font-light leading-relaxed max-w-2xl mx-auto"><?php echo $site_config['subtitle']; ?></p>
+            
+            <?php if($json_posts === false || $json_posts === 'null'): ?>
+                <div class="bg-red-500/20 text-red-200 p-4 rounded border border-red-500/50">
+                    <strong>ERRO DE SISTEMA:</strong> Falha ao processar JSON dos posts.<br>
+                    Causa provável: Caracteres inválidos em um arquivo .md (Codificação errada).<br>
+                    Log: <?php echo $json_error; ?>
+                </div>
+            <?php endif; ?>
         </div>
 
         <div class="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8" id="posts-grid">
             <?php foreach ($posts as $index => $post): ?>
-            <article class="post-card break-inside-avoid glass-card rounded-2xl overflow-hidden cursor-pointer group relative flex flex-col" 
+            <article class="post-card break-inside-avoid glass-card rounded-2xl overflow-hidden cursor-pointer group relative flex flex-col z-0 transform transition-transform" 
                      data-category="<?php echo $post['category']; ?>"
                      onclick="openModal(<?php echo $index; ?>)">
-                
                 <div class="relative aspect-[16/10] overflow-hidden">
                     <?php if($post['image']): ?>
                         <img src="<?php echo $post['image']; ?>" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 group-hover:rotate-1">
                     <?php else: ?>
                         <div class="w-full h-full bg-slate-800 flex items-center justify-center text-slate-600 font-mono text-xs">NO IMAGE</div>
                     <?php endif; ?>
-                    <div class="absolute inset-0 bg-gradient-to-t from-radar-card via-transparent to-transparent opacity-80"></div>
-                    <div class="absolute top-4 left-4">
+                    <div class="absolute inset-0 bg-gradient-to-t from-radar-card via-transparent to-transparent opacity-80 pointer-events-none"></div>
+                    <div class="absolute top-4 left-4 pointer-events-none">
                         <span class="px-3 py-1 bg-black/60 backdrop-blur-md border border-white/10 text-white text-[10px] font-bold font-mono uppercase tracking-wider rounded-md shadow-lg"><?php echo $post['category']; ?></span>
                     </div>
                 </div>
-
-                <div class="p-8 flex-1 flex flex-col">
-                    <div class="flex items-center gap-3 text-xs text-indigo-400 mb-4 font-mono font-medium tracking-wide">
+                <div class="p-8 flex-1 flex flex-col pointer-events-none"> <div class="flex items-center gap-3 text-xs text-indigo-400 mb-4 font-mono font-medium tracking-wide">
                         <span><?php echo $post['date']; ?></span>
                         <span class="w-1 h-1 bg-indigo-500 rounded-full opacity-50"></span>
                         <span class="text-slate-500"><?php echo $post['author']; ?></span>
@@ -260,6 +249,7 @@ sort($categories);
                                         <div class="flex justify-center gap-4">
                                             <a id="share-whatsapp" target="_blank" class="p-3 rounded-full bg-white/5 text-slate-300 border border-white/5 hover:bg-[#25D366] hover:text-white hover:border-[#25D366] transition-all duration-300 hover:scale-110"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
                                             <a id="share-linkedin" target="_blank" class="p-3 rounded-full bg-white/5 text-slate-300 border border-white/5 hover:bg-[#0077b5] hover:text-white hover:border-[#0077b5] transition-all duration-300 hover:scale-110"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                                            <a id="share-twitter" target="_blank" class="p-3 rounded-full bg-white/5 text-slate-300 border border-white/5 hover:bg-black hover:text-white hover:border-white/20 transition-all duration-300 hover:scale-110"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
                                         </div>
                                     </div>
                                 </div>
@@ -273,8 +263,15 @@ sort($categories);
 
     <style>@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }</style>
     <script>
-        // 1. DADOS BLINDADOS (Carregados via JS, não via HTML attribute)
-        const postsData = <?php echo json_encode($posts); ?>;
+        // DATA LOAD SAFEGUARD
+        let postsData = [];
+        try {
+            // Tenta carregar o JSON do PHP. Se falhar, usa array vazio.
+            // O código PHP já deve ter cuidado do escape.
+            postsData = <?php echo ($json_posts && $json_posts !== 'false') ? $json_posts : '[]'; ?>;
+        } catch (e) {
+            console.error("FATAL: Erro ao interpretar JSON dos posts.", e);
+        }
         
         const modal = document.getElementById('reading-modal');
         const modalBackdrop = document.getElementById('modal-backdrop');
@@ -308,12 +305,13 @@ sort($categories);
             });
         }
 
-        // 2. FUNÇÃO ATUALIZADA (Recebe apenas o índice)
         function openModal(index) {
-            const post = postsData[index]; // Busca os dados seguros no array
-            if(!post) return;
+            if (!postsData || !postsData[index]) {
+                console.error("Post index not found or invalid data.");
+                return;
+            }
+            const post = postsData[index];
 
-            // Populate
             document.getElementById('modal-title').textContent = post.title;
             document.getElementById('modal-category').textContent = post.category;
             document.getElementById('modal-author').textContent = post.author;
@@ -329,12 +327,11 @@ sort($categories);
             
             document.getElementById('modal-body').innerHTML = post.content;
 
-            // Share URLs
             const url = encodeURIComponent(window.location.href);
             document.getElementById('share-whatsapp').href = `https://wa.me/?text=${encodeURIComponent(post.title)}%20${url}`;
             document.getElementById('share-linkedin').href = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+            document.getElementById('share-twitter').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${url}`;
 
-            // Open Animation
             modal.classList.remove('hidden');
             body.style.overflow = 'hidden'; 
             
