@@ -257,9 +257,12 @@ sort($categories);
                             
                             <div class="mt-16 pt-8 border-t border-white/10 text-center">
                                 <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4">Compartilhar</p>
-                                <div class="flex justify-center gap-4">
+                                <div class="flex justify-center gap-2">
+                                    <a id="btn-em" target="_blank" class="px-4 py-2 border border-white/10 rounded-none text-gray-300 hover:text-black hover:bg-radar-gold hover:border-radar-gold transition-all text-xs font-bold uppercase">E-Mail</a>
                                     <a id="btn-wa" target="_blank" class="px-4 py-2 border border-white/10 rounded-none text-gray-300 hover:text-black hover:bg-radar-gold hover:border-radar-gold transition-all text-xs font-bold uppercase">WhatsApp</a>
                                     <a id="btn-li" target="_blank" class="px-4 py-2 border border-white/10 rounded-none text-gray-300 hover:text-black hover:bg-radar-gold hover:border-radar-gold transition-all text-xs font-bold uppercase">LinkedIn</a>
+                                    <a id="btn-fb" target="_blank" class="px-4 py-2 border border-white/10 rounded-none text-gray-300 hover:text-black hover:bg-radar-gold hover:border-radar-gold transition-all text-xs font-bold uppercase">Facebook</a>
+                                    <a id="btn-tw" target="_blank" class="px-4 py-2 border border-white/10 rounded-none text-gray-300 hover:text-black hover:bg-radar-gold hover:border-radar-gold transition-all text-xs font-bold uppercase">X / Twitter</a>
                                 </div>
                             </div>
                         </div>
@@ -299,9 +302,13 @@ sort($categories);
 
             const url = window.location.href;
             const title = content.querySelector('.data-title').textContent;
+            document.getElementById('btn-em').href = `mailto:?subject=${encodeURIComponent(title)}&body=${url}`;
             document.getElementById('btn-wa').href = `https://wa.me/?text=${encodeURIComponent(title)} ${url}`;
             document.getElementById('btn-li').href = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
-
+            document.getElementById('btn-fb').href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+            document.getElementById('btn-tw').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${url}`;
+            
+            
             modal.classList.remove('hidden');
             body.style.overflow = 'hidden';
             
