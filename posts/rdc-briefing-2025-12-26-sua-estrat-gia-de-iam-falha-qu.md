@@ -1,6 +1,6 @@
 ---
 title: "Sua estratégia de IAM falha quando ignora o que não é humano. No cenário atual de Dezembro de 2025, as 'Super NHIs' são a porta dos fundos escancarada da sua nuvem."
-category: Briefing
+category: IAM
 image: images/rdc-briefing-2025-12-26-sua-estrat-gia-de-iam-falha-qu.png
 date: 25 Dez 2025
 author: Cadu Barbosa
