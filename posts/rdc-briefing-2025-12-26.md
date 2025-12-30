@@ -1,6 +1,6 @@
 ---
 title: "Se o seu roadmap de IAM foca apenas em usuários humanos, você está ignorando 98% da sua superfície de ataque real."
-category: "Strategy"
+category: "Consulting"
 image: images/rdc-IAM-2025-12-26.png
 date: "26 Dez 2025"
 author: "Cadu Barbosa"
