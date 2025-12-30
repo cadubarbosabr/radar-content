@@ -1,6 +1,6 @@
 ---
 title: "Se o seu foco está apenas em usuários humanos, o jogo já acabou. As Identidades Não-Humanas (NHI) superam as pessoas em 50:1 e muitas operam com privilégios absolutos."
-category: Briefing
+category: IAM
 image: images/rdc-briefing-2025-12-26-se-o-seu-foco-est-apenas-em-u.png
 date: 26 Dez 2025
 author: Cadu Barbosa
