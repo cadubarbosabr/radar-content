@@ -1,6 +1,6 @@
 ---
 title: "Agentic AI & The 2026 Talent Cliff"
-category: Strategy
+category: "Consulting"
 image: images/rdc-briefing-2025-12-25.jpg
 date: 25 Dec 2025
 author: Cadu Barbosa
