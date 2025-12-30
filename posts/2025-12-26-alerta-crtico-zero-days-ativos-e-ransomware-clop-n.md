@@ -1,6 +1,6 @@
 ---
 title: "Alerta Crítico: Zero-Days Ativos e Ransomware Clop no Fim do Ano"
-category: "Briefing"
+category: "Cyber"
 image: "images/rdc-cyber-2025-12-26.png"
 date: "26 dez 2025"
 author: "Cadu Barbosa"
