@@ -1,6 +1,6 @@
 ---
 title: "Alerta Vermelho: Zero-Day em Firewalls e a Onda de Vazamentos"
-category: "Briefing"
+category: "Cyber"
 image: "images/rdc-cyber-2025-12-26-005943.png"
 date: "26 dez 2025"
 author: "Cadu Barbosa"
