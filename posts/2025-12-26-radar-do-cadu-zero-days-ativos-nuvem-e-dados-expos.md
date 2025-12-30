@@ -1,6 +1,6 @@
 ---
 title: "Radar do Cadu: Zero-Days Ativos, Nuvem e Dados Expostos"
-category: "Briefing"
+category: "Cyber"
 image: "images/rdc-briefing-2025-12-26.png"
 date: "26 Dec 2025"
 author: "Cadu Barbosa"
