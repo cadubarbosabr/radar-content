@@ -1,6 +1,6 @@
 ---
 title: "Fim de Ano Tech: Posicionamento Estratégico para 2026"
-category: "Tech"
+category: "Technology"
 image: "images/rdc-cyber-2025-12-30-001132.png"
 date: "30 dez 2025"
 author: "Cadu Barbosa"
