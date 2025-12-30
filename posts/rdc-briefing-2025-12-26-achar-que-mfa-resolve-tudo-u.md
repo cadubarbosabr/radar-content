@@ -1,6 +1,6 @@
 ---
 title: "Achar que MFA resolve tudo é um erro fatal. Se a Identidade é o novo Perímetro, o Bypass de Autenticação é a nova porta dos fundos aberta para o atacante."
-category: ArchOps
+category: IAM
 image: images/rdc-briefing-2025-12-26-achar-que-mfa-resolve-tudo-u.png
 date: 26 Dez 2025
 author: Cadu Barbosa
