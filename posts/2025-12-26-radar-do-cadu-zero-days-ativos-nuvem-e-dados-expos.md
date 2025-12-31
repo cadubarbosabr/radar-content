@@ -2,7 +2,7 @@
 title: "Radar do Cadu: Zero-Days Ativos, Nuvem e Dados Expostos"
 category: "Cyber"
 image: "images/rdc-briefing-2025-12-26.png"
-date: "26 Dec 2025"
+date: "26 Dez 2025"
 author: "Cadu Barbosa"
 excerpt: "Briefing 25/12: Alerta máximo para 0-days em Fortinet, WatchGuard e infraestrutura de nuvem, além de grandes vazamentos de dados."
 ---
