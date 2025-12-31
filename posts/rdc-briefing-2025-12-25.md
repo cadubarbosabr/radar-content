@@ -2,14 +2,14 @@
 title: "Agentic AI & The 2026 Talent Cliff"
 category: "Consulting"
 image: images/rdc-briefing-2025-12-25.jpg
-date: 25 Dec 2025
-author: Cadu Barbosa
-excerpt: "Briefing 25/12: Accenture define a Era dos Agentes Autônomos, Bain alerta para gap de retenção e KPMG mapeia riscos de soberania de dados."
+date: "25 Dez 2025"
+author: "Cadu Barbosa"
+excerpt: "Accenture define a Era dos Agentes Autônomos, Bain alerta para gap de retenção e KPMG mapeia riscos de soberania de dados."
 ---
 
 # Agentic AI & The 2026 Talent Cliff
 
-**Briefing 25/12: Accenture define a Era dos Agentes Autônomos, Bain alerta para gap de retenção e KPMG mapeia riscos de soberania de dados.**
+**Accenture define a Era dos Agentes Autônomos, Bain alerta para gap de retenção e KPMG mapeia riscos de soberania de dados.**
 
 📅 Quinta-feira, 25 de dezembro de 2025
 
