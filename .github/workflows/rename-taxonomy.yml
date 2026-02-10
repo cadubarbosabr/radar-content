@@ -1,0 +1,122 @@
+name: Bulk Rename Taxonomy
+
+on:
+  workflow_dispatch: # Permite rodar manualmente para corrigir arquivos antigos
+  push:
+    paths:
+      - 'posts/**'
+      - 'images/**'
+
+jobs:
+  fix-taxonomy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Essencial para permitir que o bot faça o push
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Execute Taxonomy Fix
+        run: |
+          python - <<EOF
+          import os
+          import re
+          from datetime import datetime
+
+          # Configurações de pastas
+          DIRS = ['posts', 'images']
+
+          def get_clean_slug(filename):
+              # Remove extensao
+              name, ext = os.path.splitext(filename)
+              # Remove data YYYY-MM-DD ou YYYY-MM-DD-HHMM inicial se já existir
+              name = re.sub(r'^\d{4}-\d{2}-\d{2}(-\d{4})?-', '', name)
+              # Slugify (lowercase, apenas alfanuméricos e hífens)
+              name = name.lower()
+              name = re.sub(r'[^a-z0-9]+', '-', name).strip('-')
+              return name, ext
+
+          def get_file_date(path):
+              # Tenta pegar a data do frontmatter se for Markdown
+              if path.endswith('.md'):
+                  try:
+                      with open(path, 'r', encoding='utf-8') as f:
+                          content = f.read()
+                          match = re.search(r'date:\s*"?(\d{4}-\d{2}-\d{2})', content)
+                          if match: return match.group(1)
+                  except: pass
+              
+              # Fallback: Data de modificação do arquivo no Git/OS
+              stat = os.stat(path)
+              return datetime.fromtimestamp(stat.st_mtime).strftime('%Y-%m-%d')
+
+          rename_log = {}
+
+          for folder in DIRS:
+              if not os.path.exists(folder): continue
+              
+              for filename in os.listdir(folder):
+                  if filename.startswith('.') or os.path.isdir(os.path.join(folder, filename)):
+                      continue
+                  
+                  old_path = os.path.join(folder, filename)
+                  
+                  # Se o arquivo já está no formato correto, ignoramos para evitar loops
+                  if re.match(r'^\d{4}-\d{2}-\d{2}-', filename):
+                      continue
+
+                  file_date = get_file_date(old_path)
+                  slug, extension = get_clean_slug(filename)
+                  
+                  new_name = f"{file_date}-{slug}{extension}"
+                  new_path = os.path.join(folder, new_name)
+
+                  if old_path != new_path:
+                      # Verifica se o destino já existe para não sobrescrever
+                      if not os.path.exists(new_path):
+                          print(f"Renomeando: {filename} -> {new_name}")
+                          os.rename(old_path, new_path)
+                          rename_log[filename] = new_name
+                      else:
+                          print(f"⚠️ Conflito: {new_name} já existe. Pulando...")
+
+          # Atualiza referências de imagens dentro dos posts
+          posts_dir = 'posts'
+          if os.path.exists(posts_dir):
+              for post_file in os.listdir(posts_dir):
+                  if not post_file.endswith('.md'): continue
+                  post_path = os.path.join(posts_dir, post_file)
+                  
+                  with open(post_path, 'r', encoding='utf-8') as f:
+                      content = f.read()
+                  
+                  original_content = content
+                  for old_img, new_img in rename_log.items():
+                      if old_img in content:
+                          content = content.replace(old_img, new_img)
+                  
+                  if content != original_content:
+                      with open(post_path, 'w', encoding='utf-8') as f:
+                          f.write(content)
+                      print(f"🔗 Links atualizados em: {post_file}")
+          EOF
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          if git diff --staged --quiet; then
+            echo "Nenhuma mudança necessária."
+          else
+            git commit -m "chore: padronização retroativa da taxonomia de arquivos"
+            git push
+          fi
