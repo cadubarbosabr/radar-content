@@ -1,0 +1,169 @@
+name: Bulk Rename Taxonomy (Enhanced)
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: 'Defina como true para aplicar (gera branch e PR). False apenas lista o plano.'
+        required: false
+        default: 'false'
+      base_branch:
+        description: 'Branch de destino do PR'
+        required: false
+        default: 'main'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  rename:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Run Enhanced Taxonomy Engine
+        id: engine
+        shell: bash
+        run: |
+          python3 - <<'EOF'
+          import os, re, subprocess, unicodedata
+          from datetime import datetime
+
+          def slugify(value):
+              # Remove acentos e caracteres especiais
+              value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore').decode('ascii')
+              value = re.sub(r'[^\w\s-]', '', value).strip().lower()
+              return re.sub(r'[-\s]+', '-', value)
+
+          def get_best_date(path):
+              filename = os.path.basename(path)
+              # 1. Tenta achar YYYY-MM-DD ou YYYY-MM-DD-HHMM no nome
+              match = re.search(r'(\d{4}-\d{2}-\d{2}(?:-\d{4})?)', filename)
+              if match: return match.group(1)
+              
+              # 2. Tenta achar formato brasileiro DD-MM-YYYY
+              br_match = re.search(r'(\d{2})-(\d{2})-(\d{4})', filename)
+              if br_match: return f"{br_match.group(3)}-{br_match.group(2)}-{br_match.group(1)}"
+              
+              # 3. Se for Markdown, tenta ler o frontmatter 'date:'
+              if path.endswith('.md'):
+                  try:
+                      with open(path, 'r', encoding='utf-8') as f:
+                          content = f.read()
+                          fm_match = re.search(r'date:\s*"?(\d{4}-\d{2}-\d{2})', content)
+                          if fm_match: return fm_match.group(1)
+                  except: pass
+
+              # 4. Fallback: Data do primeiro commit no Git (criação real no repositório)
+              try:
+                  git_date = subprocess.check_output(['git', 'log', '--diff-filter=A', '--format=%ci', '--', path]).decode().split('\n')[0]
+                  if git_date:
+                      return datetime.strptime(git_date[:16], '%Y-%m-%d %H:%M').strftime('%Y-%m-%d-%H%M')
+              except: pass
+              
+              return datetime.now().strftime('%Y-%m-%d')
+
+          plan = []
+          rename_map = {}
+          target_dirs = ['images', 'posts']
+
+          for folder in target_dirs:
+              if not os.path.exists(folder): continue
+              for f in os.listdir(folder):
+                  if f.startswith('.') or os.path.isdir(os.path.join(folder, f)): continue
+                  
+                  old_path = os.path.join(folder, f)
+                  date_prefix = get_best_date(old_path)
+                  
+                  # Isola o nome descritivo (remove datas antigas do início ou fim)
+                  name_part, ext = os.path.splitext(f)
+                  # Remove padrões de data comuns para limpar o slug
+                  clean_name = re.sub(r'\d{4}-\d{2}-\d{2}|\d{2}-\d{2}-\d{4}', '', name_part)
+                  slug = slugify(clean_name)
+                  
+                  if not slug: slug = "content" # Fallback se o nome for só números
+                  
+                  new_name = f"{date_prefix}-{slug}{ext.lower()}"
+                  new_path = os.path.join(folder, new_name)
+
+                  if f != new_name:
+                      rename_map[f] = new_name
+                      plan.append((old_path, new_path))
+
+          apply = "${{ github.event.inputs.apply }}" == "true"
+          with open('rename-plan.txt', 'w') as log:
+              if not plan:
+                  log.write("Nenhuma mudança necessária. Todos os arquivos seguem a taxonomia.")
+              else:
+                  log.write(f"PLANO DE RENOMEAÇÃO ({'APLICANDO' if apply else 'DRY RUN'})\n")
+                  log.write("="*50 + "\n")
+                  for old, new in plan:
+                      log.write(f"{old} -> {new}\n")
+                      if apply:
+                          # Garante que o diretório de destino existe e move via git
+                          os.makedirs(os.path.dirname(new), exist_ok=True)
+                          subprocess.run(['git', 'mv', old, new])
+
+                  # Atualiza links nos posts se houver renomeações aplicadas
+                  if apply and rename_map:
+                      posts_dir = 'posts'
+                      if os.path.exists(posts_dir):
+                          for post in os.listdir(posts_dir):
+                              if not post.endswith('.md'): continue
+                              p_path = os.path.join(posts_dir, post)
+                              with open(p_path, 'r', encoding='utf-8') as file: content = file.read()
+                              
+                              new_content = content
+                              for old_f, new_f in rename_map.items():
+                                  # Substitui apenas se for o nome exato (evita substituir partes de nomes)
+                                  new_content = new_content.replace(old_f, new_f)
+                              
+                              if new_content != content:
+                                  with open(p_path, 'w', encoding='utf-8') as file: file.write(new_content)
+                                  log.write(f"LINK ATUALIZADO: {post}\n")
+          EOF
+          
+          # Captura se haverá branch para o próximo step
+          if [[ "${{ github.event.inputs.apply }}" == "true" ]]; then
+            echo "branch=refactor/taxonomy-$(date +%Y%m%d%H%M)" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Upload Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: taxonomy-report
+          path: rename-plan.txt
+
+      - name: Commit and Create PR
+        if: ${{ github.event.inputs.apply == 'true' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH="${{ steps.engine.outputs.branch }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          git checkout -b "$BRANCH"
+          git add .
+          
+          if git diff --staged --quiet; then
+            echo "Nada para commitar."
+          else
+            git commit -m "chore: padronização de taxonomia (YYYY-MM-DD-name)"
+            git push origin "$BRANCH"
+            
+            gh pr create \
+              --title "Refactor: Padronização de Nomes e Links" \
+              --body "Este PR foi gerado automaticamente para corrigir a taxonomia das pastas /posts e /images. Verifique os arquivos renomeados e se os links de imagens nos posts continuam funcionando." \
+              --base "${{ github.event.inputs.base_branch }}" \
+              --head "$BRANCH"
+          fi
