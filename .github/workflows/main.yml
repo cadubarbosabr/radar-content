@@ -83,8 +83,6 @@ jobs:
             const base = '${{ github.event.inputs.base_branch }}' || 'main';
             const title = 'refactor: standardize posts/ and images/ filenames to YYYY-MM-DD(-HHMM)-descriptive-name';
             const body = `Automated run of scripts/rename.sh (via GitHub Actions).
-This PR contains file renames proposed by the script for posts/ and images/. Review the commit(s) and merge when ready.`;
-
             const pr = await github.rest.pulls.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
