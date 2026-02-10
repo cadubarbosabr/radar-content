@@ -1,7 +1,7 @@
 ---
 title: "Chips, IA e Automação: O Fim de Ano da Tech"
 category: "Technology"
-image: "images/rdc-cyber-2025-12-31-235703.png"
+image: "images/2026-02-10-rdc-cyber-2025-12-31-235703.png"
 date: "30 dez 2025"
 author: "Cadu Barbosa"
 excerpt: "Nvidia e Intel redefinem o cenário de hardware para IA, enquanto Tesla avança em autonomia e Meta expande seu portfólio de IA com aquisição estratégica."

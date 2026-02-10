@@ -1,7 +1,7 @@
 ---
 title: "2026: Zero-Days, Ransomware e a Realidade da Nuvem"
 category: "Cyber"
-image: "images/rdc-cyber-2026-01-08-184313.png"
+image: "images/2026-02-10-rdc-cyber-2026-01-08-184313.png"
 date: "08 jan 2026"
 author: "Cadu Barbosa"
 excerpt: "Resumo: O início de 2026 é marcado por explorações ativas de zero-days, novas campanhas de ransomware e vazamentos massivos em infraestruturas críticas e na cadeia de suprimentos."

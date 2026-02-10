@@ -1,7 +1,7 @@
 ---
 title: "Alerta 0-Day: MongoBleed, React2Shell e MSHTML Sob Ataque"
 category: "Cyber"
-image: "images/rdc-cyber-2026-01-04-020936.png"
+image: "images/2026-02-10-rdc-cyber-2026-01-04-020936.png"
 date: "04 jan 2026"
 author: "Cadu Barbosa"
 excerpt: "Briefing 04/01: 0-Days críticos explorados, ransomware ativo e phishing via plataformas legítimas. Priorize patches e defesas."

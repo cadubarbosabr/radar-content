@@ -1,7 +1,7 @@
 ---
 title: "Radar do Cadu: 0-Days de Fim de Ano e Vazamentos em Massa"
 category: "Cyber"
-image: "images/rdc-cyber-2025-12-29-164229.png"
+image: "images/2026-02-10-rdc-cyber-2025-12-29-164229.png"
 date: "29 dez 2025"
 author: "Cadu Barbosa"
 excerpt: "Briefing 29/12: Alerta máximo para 0-days ativos em Cisco, Windows, Chrome e Android; vazamentos massivos de PII e ataque à Ubisoft."

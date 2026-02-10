@@ -1,7 +1,7 @@
 ---
 title: "Calmaria Estratégica: O Mercado Tech Pós-Festas e a Preparação para 2026"
 category: "Business"
-image: "images/rdc-business-2026-01-04-020817.png"
+image: "images/2026-02-10-rdc-business-2026-01-04-020817.png"
 date: "04 jan 2026"
 author: "Cadu Barbosa"
 excerpt: "Análise executiva sobre a ausência de grandes movimentos e o foco na consolidação estratégica."

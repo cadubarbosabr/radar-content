@@ -1,7 +1,7 @@
 ---
 title: "Wall Street Acelera IA e Cripto; Fed Mantém Cautela nas Taxas"
 category: "Financial"
-image: "images/rdc-cyber-2026-01-08-184322.png"
+image: "images/2026-02-10-rdc-cyber-2026-01-08-184322.png"
 date: "08 jan 2026"
 author: "Cadu Barbosa"
 excerpt: "Briefing Market 08/01: Bancos avançam em IA e ETFs de Ethereum, enquanto Fed sinaliza ciclo de cortes de juros não-linear."

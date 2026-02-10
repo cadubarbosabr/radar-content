@@ -1,7 +1,7 @@
 ---
 title: "Fim de Ano Tech: Posicionamento Estratégico para 2026"
 category: "Technology"
-image: "images/rdc-cyber-2025-12-30-001132.png"
+image: "images/2026-02-10-rdc-cyber-2025-12-30-001132.png"
 date: "30 dez 2025"
 author: "Cadu Barbosa"
 excerpt: "Semana de consolidação e antecipação, com Big Techs e startups ajustando rotas para o próximo ciclo de inovação e desafios regulatórios."

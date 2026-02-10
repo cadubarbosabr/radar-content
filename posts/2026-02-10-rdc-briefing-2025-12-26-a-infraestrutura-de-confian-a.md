@@ -1,7 +1,7 @@
 ---
 title: "A infraestrutura de confiança foi quebrada. Se você ainda depende de SMS para MFA ou ignora Identidades de Máquina, seu \"Zero Trust\" é apenas um slogan de marketing."
 category: Briefing
-image: images/rdc-briefing-2025-12-26-a-infraestrutura-de-confian-a.png
+image: images/2026-02-10-rdc-briefing-2025-12-26-a-infraestrutura-de-confian-a.png
 date: 26 Dez 2025
 author: Cadu Barbosa
 excerpt: "A Identidade é o novo Perímetro, mas esse perímetro está sob cerco infraestrutural. O risco de negócio migrou do 'usuário que clica em phishing' para a 'credencial de máquina invisível e superprivilegiada'. Sem ITDR focado em Workload Identity e autenticação resistente a phishing, a resiliência cibernética é ilusória."
@@ -21,4 +21,4 @@ excerpt: "A Identidade é o novo Perímetro, mas esse perímetro está sob cerco
 
 `#RadarDoCadu` `#IAM` `#ZeroTrust` `#CyberSecurity` `#InfoSec` `#CISO`
 
-![Briefing Image](../images/rdc-briefing-2025-12-26-a-infraestrutura-de-confian-a.png)
+![Briefing Image](../images/2026-02-10-rdc-briefing-2025-12-26-a-infraestrutura-de-confian-a.png)

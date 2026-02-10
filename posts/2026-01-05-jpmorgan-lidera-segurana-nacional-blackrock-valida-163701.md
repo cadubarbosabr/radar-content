@@ -1,7 +1,7 @@
 ---
 title: "JPMorgan Lidera Segurança Nacional; BlackRock Valida Cripto Institucional; IA Generativa Acelera Bancos"
 category: "Financial"
-image: "images/rdc-cyber-2026-01-05-163701.png"
+image: "images/2026-02-10-rdc-cyber-2026-01-05-163701.png"
 date: "05 jan 2026"
 author: "Cadu Barbosa"
 excerpt: "Briefing Market 05/01: Capital Estratégico, Digitalização de Ativos e Automação Bancária definem o início de 2026."

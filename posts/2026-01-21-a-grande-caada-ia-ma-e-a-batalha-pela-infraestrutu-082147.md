@@ -1,7 +1,7 @@
 ---
 title: "A Grande Caçada: IA, M&A e a Batalha pela Infraestrutura e Inovação Automotiva"
 category: "Cyber"
-image: "images/rdc-cyber-2026-01-21-082147.png"
+image: "images/2026-02-10-rdc-cyber-2026-01-21-082147.png"
 date: "21 jan 2026"
 author: "Cadu Barbosa"
 excerpt: "Big Techs investem pesado em chips de inferência, M&A acelera na tecnologia e finanças, e o setor automotivo redefine a monetização com software e IA."

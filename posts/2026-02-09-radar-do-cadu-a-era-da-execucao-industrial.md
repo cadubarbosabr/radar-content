@@ -1,7 +1,7 @@
 ---
 title: "Radar do Cadu: A Era da Execução Industrial"
 category: "Technology"
-image: "images/rdc-cyber-2026-02-09-radar-do-cadu-a-era-da-execucao-industrial.png"
+image: "images/2026-02-10-rdc-cyber-2026-02-09-radar-do-cadu-a-era-da-execucao-industrial.png"
 date: "09 fev 2026"
 author: "Cadu Barbosa"
 excerpt: "Edição Especial: 09 de Fevereiro de 2026 - O Fim da Experimentação e o Início do Super-Capex"

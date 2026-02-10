@@ -1,7 +1,7 @@
 ---
 title: "A Virada Silenciosa: Como Americanas e BC Estão Redefinindo o Jogo Digital"
 category: "Cyber"
-image: "images/rdc-business-2026-01-27-145002.png"
+image: "images/2026-02-10-rdc-business-2026-01-27-145002.png"
 date: "27 jan 2026"
 author: "Cadu Barbosa"
 excerpt: "Parcerias estratégicas e regulamentações robustas sinalizam uma nova era para o varejo e finanças digitais no Brasil."

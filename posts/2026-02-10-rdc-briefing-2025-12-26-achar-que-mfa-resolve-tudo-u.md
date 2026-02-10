@@ -1,7 +1,7 @@
 ---
 title: "Achar que MFA resolve tudo é um erro fatal. Se a Identidade é o novo Perímetro, o Bypass de Autenticação é a nova porta dos fundos aberta para o atacante."
 category: IAM
-image: images/rdc-briefing-2025-12-26-achar-que-mfa-resolve-tudo-u.png
+image: images/2026-02-10-rdc-briefing-2025-12-26-achar-que-mfa-resolve-tudo-u.png
 date: 26 Dez 2025
 author: Cadu Barbosa
 excerpt: "O Zero Trust real não confia cegamente no token ou no check de MFA. A resiliência cibernética exige validação contínua do contexto da sessão e tratamento de Máquinas e IA como vetores de alto privilégio."
@@ -21,4 +21,4 @@ excerpt: "O Zero Trust real não confia cegamente no token ou no check de MFA. A
 
 `#RadarDoCadu` `#IdentityFirst` `#ZeroTrust` `#CyberSecurity` `#IAM` `#InfoSec`
 
-![Briefing Image](../images/rdc-briefing-2025-12-26-achar-que-mfa-resolve-tudo-u.png)
+![Briefing Image](../images/2026-02-10-rdc-briefing-2025-12-26-achar-que-mfa-resolve-tudo-u.png)

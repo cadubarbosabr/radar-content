@@ -1,7 +1,7 @@
 ---
 title: "Executive Cyber Radar: The Integrity Crisis"
 category: "Cyber"
-image: "images/rdc-cyber-2026-01-27-152716.png"
+image: "images/2026-02-10-rdc-cyber-2026-01-27-152716.png"
 date: "27 jan 2026"
 author: "Cadu Barbosa"
 excerpt: "Da Privacidade à Integridade Operacional: O Novo Custo da Resiliência."

@@ -1,7 +1,7 @@
 ---
 title: "Executive Cyber Radar: Q1 2026 Outlook"
 category: "Cyber"
-image: "images/rdc-cyber-2026-02-09-122510.png"
+image: "images/2026-02-10-rdc-cyber-2026-02-09-122510.png"
 date: "09 fev 2026"
 author: "Cadu Barbosa"
 excerpt: "Da Privacidade à Integridade Operacional: O Novo Mandato de Resiliência."

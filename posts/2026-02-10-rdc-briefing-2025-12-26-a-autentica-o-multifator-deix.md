@@ -1,7 +1,7 @@
 ---
 title: "A autenticação multifator deixou de ser uma barreira intransponível. No cenário atual de ameaças, confiar cegamente no MFA sem monitoramento contínuo é um erro estratégico grave."
 category: Briefing
-image: images/rdc-briefing-2025-12-26-a-autentica-o-multifator-deix.png
+image: images/2026-02-10-rdc-briefing-2025-12-26-a-autentica-o-multifator-deix.png
 date: 26 Dez 2025
 author: Cadu Barbosa
 excerpt: "No modelo Zero Trust, a emissão da credencial deve ser tão vigiada quanto o seu uso. A segurança de identidade deve evoluir do simples IAM para o ITDR (Identity Threat Detection and Response), focando em comportamento anômalo tanto de humanos quanto de máquinas."
@@ -19,4 +19,4 @@ excerpt: "No modelo Zero Trust, a emissão da credencial deve ser tão vigiada q
 
 `#RadarDoCadu` `#IAM` `#CyberSecurity` `#ZeroTrust` `#EntraID` `#CISO`
 
-![Briefing Image](../images/rdc-briefing-2025-12-26-a-autentica-o-multifator-deix.png)
+![Briefing Image](../images/2026-02-10-rdc-briefing-2025-12-26-a-autentica-o-multifator-deix.png)

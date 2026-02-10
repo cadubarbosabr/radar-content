@@ -1,7 +1,7 @@
 ---
 title: "Alerta Vermelho: Zero-Day em Firewalls e a Onda de Vazamentos"
 category: "Cyber"
-image: "images/rdc-cyber-2025-12-26-005943.png"
+image: "images/2026-02-10-rdc-cyber-2025-12-26-005943.png"
 date: "26 dez 2025"
 author: "Cadu Barbosa"
 excerpt: "Briefing 26/12: Firebox sob ataque, ransomware ativo e múltiplos vazamentos de dados expõem milhões."

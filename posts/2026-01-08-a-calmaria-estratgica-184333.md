@@ -1,7 +1,7 @@
 ---
 title: "A Calmaria Estratégica"
 category: "Technology"
-image: "images/rdc-cyber-2026-01-08-184333.png"
+image: "images/2026-02-10-rdc-cyber-2026-01-08-184333.png"
 date: "08 jan 2026"
 author: "Cadu Barbosa"
 excerpt: "Mercado Tech inicia 2026 em modo de reavaliação, sem grandes anúncios na primeira semana."

@@ -1,7 +1,7 @@
 ---
 title: "Radar do Cadu: Quantum-Safe, Zero Trust e a Evolução do Ransomware"
 category: "IAM"
-image: "images/rdc-cyber-2026-01-30-111552.png"
+image: "images/2026-02-10-rdc-cyber-2026-01-30-111552.png"
 date: "30 jan 2026"
 author: "Cadu Barbosa"
 excerpt: "Novas frentes em criptografia, estratégias de acesso e desafios de governança de identidade."

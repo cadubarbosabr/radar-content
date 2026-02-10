@@ -1,7 +1,7 @@
 ---
 title: "A ILUSÃO DA IA GENÉRICA: O Que Seu Board Não Vê Sobre O Verdadeiro ROI."
 category: "Cyber"
-image: "images/rdc-business-2026-02-09-122246.png"
+image: "images/2026-02-10-rdc-business-2026-02-09-122246.png"
 date: "09 fev 2026"
 author: "Cadu Barbosa"
 excerpt: "Não é sobre ter IA, é sobre ter a IA CERTA para o seu negócio. A era da especialização chegou."

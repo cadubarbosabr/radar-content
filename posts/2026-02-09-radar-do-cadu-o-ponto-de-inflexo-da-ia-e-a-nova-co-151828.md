@@ -1,7 +1,7 @@
 ---
 title: "Radar do Cadu: O Ponto de Inflexão da IA e a Nova Corrida Espacial-Automotiva"
 category: "Cyber"
-image: "images/rdc-cyber-2026-02-09-151828.png"
+image: "images/2026-02-10-rdc-cyber-2026-02-09-151828.png"
 date: "09 fev 2026"
 author: "Cadu Barbosa"
 excerpt: "Mega-fusões, avalanche de investimentos em IA e a redefinição do futuro automotivo marcam a semana de 2 a 9 de fevereiro de 2026."

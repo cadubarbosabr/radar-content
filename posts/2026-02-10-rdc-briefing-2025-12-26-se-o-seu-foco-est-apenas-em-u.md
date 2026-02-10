@@ -1,7 +1,7 @@
 ---
 title: "Se o seu foco está apenas em usuários humanos, o jogo já acabou. As Identidades Não-Humanas (NHI) superam as pessoas em 50:1 e muitas operam com privilégios absolutos."
 category: IAM
-image: images/rdc-briefing-2025-12-26-se-o-seu-foco-est-apenas-em-u.png
+image: images/2026-02-10-rdc-briefing-2025-12-26-se-o-seu-foco-est-apenas-em-u.png
 date: 26 Dez 2025
 author: Cadu Barbosa
 excerpt: "O Zero Trust não é apenas sobre MFA para pessoas. A verdadeira fronteira de batalha está na identidade de máquina. Se você não governa o ciclo de vida dos seus Service Principals e APIs com o mesmo rigor que aplica ao CEO, seu 'novo perímetro' é inexistente."
@@ -21,4 +21,4 @@ excerpt: "O Zero Trust não é apenas sobre MFA para pessoas. A verdadeira front
 
 `#RadarDoCadu` `#IAM` `#ZeroTrust` `#NonHumanIdentity` `#CyberSecurity`
 
-![Briefing Image](../images/rdc-briefing-2025-12-26-se-o-seu-foco-est-apenas-em-u.png)
+![Briefing Image](../images/2026-02-10-rdc-briefing-2025-12-26-se-o-seu-foco-est-apenas-em-u.png)

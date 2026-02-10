@@ -1,7 +1,7 @@
 ---
 title: "A Mega Fusão de Musk e a Verdade por Trás dos US$ 108 Bilhões Desperdiçados em IA"
 category: "Cyber"
-image: "images/rdc-business-2026-02-09-170323.png"
+image: "images/2026-02-10-rdc-business-2026-02-09-170323.png"
 date: "09 fev 2026"
 author: "Cadu Barbosa"
 excerpt: "Mercado ferve com M&A (fusões e aquisições), IA (Inteligência Artificial) redefine o jogo e CEOs (Chief Executive Officers) buscam agilidade em um cenário regulatório complexo."

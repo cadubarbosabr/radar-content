@@ -1,7 +1,7 @@
 ---
 title: "Alerta Crítico: Zero-Days Ativos e Ransomware Clop no Fim do Ano"
 category: "Cyber"
-image: "images/rdc-cyber-2025-12-26.png"
+image: "images/2026-02-10-rdc-cyber-2025-12-26.png"
 date: "26 dez 2025"
 author: "Cadu Barbosa"
 excerpt: "Briefing 26/12: Múltiplos 0-days em Oracle, MS, Cisco e WatchGuard exigem ação imediata. Clop explora Oracle EBS."

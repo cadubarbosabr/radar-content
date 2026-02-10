@@ -1,7 +1,7 @@
 ---
 title: "Radar do Cadu: A Era da Infraestrutura Soberana"
 category: "Technology"
-image: "images/rdc-cyber-2026-02-09-1704-radar-do-cadu-a-era-da-infraestrutura-soberana.png"
+image: "images/2026-02-10-rdc-cyber-2026-02-09-1704-radar-do-cadu-a-era-da-infraestrutura-soberana.png"
 date: "09 fev 2026"
 author: "Cadu Barbosa"
 excerpt: "O salto para o espaço e a consolidação dos novos impérios tecnológicos em 2026"

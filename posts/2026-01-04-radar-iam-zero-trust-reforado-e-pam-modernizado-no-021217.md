@@ -1,7 +1,7 @@
 ---
 title: "Radar IAM: Zero Trust Reforçado e PAM Modernizado no Início de 2026"
 category: "IAM"
-image: "images/rdc-cyber-2026-01-04-021217.png"
+image: "images/2026-02-10-rdc-cyber-2026-01-04-021217.png"
 date: "04 jan 2026"
 author: "Cadu Barbosa"
 excerpt: "Briefing IAM 04/01: Defender Experts e CyberArk PAM 15.0 elevam a barra da segurança de acesso."

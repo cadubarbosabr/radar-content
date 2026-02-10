@@ -1,7 +1,7 @@
 ---
 title: "GenAI Consolida-se como Infraestrutura Essencial: De Piloto à Produção em Escala"
 category: "Business"
-image: "images/rdc-business-2026-01-08-184327.png"
+image: "images/2026-02-10-rdc-business-2026-01-08-184327.png"
 date: "08 jan 2026"
 author: "Cadu Barbosa"
 excerpt: "Adoção empresarial de IA Generativa acelera, demandando estratégia de industrialização e governança para ROI tangível."

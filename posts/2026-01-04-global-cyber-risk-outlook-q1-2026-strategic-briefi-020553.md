@@ -1,7 +1,7 @@
 ---
 title: "Global Cyber Risk Outlook: Q1 2026 Strategic Briefing"
 category: "Consulting"
-image: "images/rdc-cyber-2026-01-04-020553.png"
+image: "images/2026-02-10-rdc-cyber-2026-01-04-020553.png"
 date: "04 jan 2026"
 author: "Cadu Barbosa"
 excerpt: "Briefing Executivo | Semana 01"

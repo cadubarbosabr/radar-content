@@ -1,7 +1,7 @@
 ---
 title: "Executive Cyber Radar: Q1 Strategic Foresight 2026"
 category: "Consulting"
-image: "images/rdc-cyber-2026-01-08-184318.png"
+image: "images/2026-02-10-rdc-cyber-2026-01-08-184318.png"
 date: "08 jan 2026"
 author: "Cadu Barbosa"
 excerpt: "Análise de riscos emergentes e diretrizes estratégicas para a resiliência corporativa no primeiro trimestre."

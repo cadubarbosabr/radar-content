@@ -1,7 +1,7 @@
 ---
 title: "A Falsa Segurança da Sua Borda: Zero-Days e o Fim do MFA?"
 category: "Cyber"
-image: "images/rdc-cyber-2026-02-09-122513.png"
+image: "images/2026-02-10-rdc-cyber-2026-02-09-122513.png"
 date: "09 fev 2026"
 author: "Cadu Barbosa"
 excerpt: "Zero-days em Ivanti e Microsoft, falhas em dispositivos de borda e a quebra do MFA por ataques AiTM dominam a semana. Sua defesa está pronta?"

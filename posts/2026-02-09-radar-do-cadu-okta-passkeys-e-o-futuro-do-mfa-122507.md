@@ -1,7 +1,7 @@
 ---
 title: "Radar do Cadu: Okta, Passkeys e o Futuro do MFA"
 category: "IAM"
-image: "images/rdc-cyber-2026-02-09-122507.png"
+image: "images/2026-02-10-rdc-cyber-2026-02-09-122507.png"
 date: "09 fev 2026"
 author: "Cadu Barbosa"
 excerpt: "Atualizações críticas no Okta Identity Engine, a ascensão dos Passkeys e a urgência de MFA phishing-resistant."

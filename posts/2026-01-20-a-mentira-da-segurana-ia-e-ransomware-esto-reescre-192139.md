@@ -1,7 +1,7 @@
 ---
 title: "A MENTIRA DA SEGURANÇA: IA e Ransomware estão reescrevendo as regras."
 category: "Cyber"
-image: "images/rdc-cyber-2026-01-20-192139.png"
+image: "images/2026-02-10-rdc-cyber-2026-01-20-192139.png"
 date: "20 jan 2026"
 author: "Cadu Barbosa"
 excerpt: "Ransomware sem criptografia, zero-days explorados por grupos APT (Advanced Persistent Threat - grupos de ataque avançados e persistentes) e a explosão de vulnerabilidades (falhas de segurança) definem a semana."

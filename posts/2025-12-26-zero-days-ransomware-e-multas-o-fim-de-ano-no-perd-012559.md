@@ -1,7 +1,7 @@
 ---
 title: "Zero-Days, Ransomware e Multas: O Fim de Ano Não Perdoa"
 category: "Cyber"
-image: "images/rdc-cyber-2025-12-26-012559.png"
+image: "images/2026-02-10-rdc-cyber-2025-12-26-012559.png"
 date: "26 dez 2025"
 author: "Cadu Barbosa"
 excerpt: "Briefing 26/12: Zero-days ativos, falhas de patch e a mão pesada da regulamentação dominam a semana."

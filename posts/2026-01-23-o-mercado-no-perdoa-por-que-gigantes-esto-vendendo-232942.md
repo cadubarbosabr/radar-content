@@ -1,7 +1,7 @@
 ---
 title: "O Mercado Não Perdoa: Por Que Gigantes Estão Vendendo Ativos e Ações de Software Despencam?"
 category: "Cyber"
-image: "images/rdc-business-2026-01-23-232942.png"
+image: "images/2026-02-10-rdc-business-2026-01-23-232942.png"
 date: "22 jan 2026"
 author: "Cadu Barbosa"
 excerpt: "De vendas bilionárias a quedas bruscas: o que realmente move o tabuleiro tech em 2026."

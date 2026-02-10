@@ -1,7 +1,7 @@
 ---
 title: "Radar do Cadu: Biometria Zero-Knowledge, Passkeys Ubíquas e Ataques AiTM em Ascensão"
 category: "IAM"
-image: "images/rdc-cyber-2026-01-08-183317.png"
+image: "images/2026-02-10-rdc-cyber-2026-01-08-183317.png"
 date: "08 jan 2026"
 author: "Cadu Barbosa"
 excerpt: "Mercado de Identidade aquecido com aquisições estratégicas, avaliações financeiras positivas e a urgência da migração para MFA resistente a phishing."

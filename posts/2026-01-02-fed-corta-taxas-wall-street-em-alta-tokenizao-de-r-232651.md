@@ -1,7 +1,7 @@
 ---
 title: "Fed Corta Taxas, Wall Street em Alta, Tokenização de RWA Acelera"
 category: "Financial"
-image: "images/rdc-cyber-2026-01-02-232651.png"
+image: "images/2026-02-10-rdc-cyber-2026-01-02-232651.png"
 date: "01 jan 2026"
 author: "Cadu Barbosa"
 excerpt: "Briefing Market 01/01: Fed sinaliza mais cortes, lucros corporativos impulsionam índices e grandes bancos avançam em ativos digitais."

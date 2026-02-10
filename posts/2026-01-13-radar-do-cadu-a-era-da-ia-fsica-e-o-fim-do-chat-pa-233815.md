@@ -1,7 +1,7 @@
 ---
 title: "Radar do Cadu: A Era da IA Física e o Fim do Chat Passivo"
 category: "AI"
-image: "images/rdc-cyber-2026-01-13-233815.png"
+image: "images/2026-02-10-rdc-cyber-2026-01-13-233815.png"
 date: "12 jan 2026"
 author: "Cadu Barbosa"
 excerpt: "NVIDIA Rubin, GPT-5.2 Agêntico e a consolidação da Robótica na CES 2026."

@@ -1,7 +1,7 @@
 ---
 title: "Radar do Cadu: IA, Energia e o Novo Jogo de Poder"
 category: "Cyber"
-image: "images/rdc-cyber-2026-01-14-201115.png"
+image: "images/2026-02-10-rdc-cyber-2026-01-14-201115.png"
 date: "14 jan 2026"
 author: "Cadu Barbosa"
 excerpt: "De chips mais rápidos a usinas nucleares reativadas, o foco das gigantes se move para a infraestrutura da inteligência artificial, enquanto M&A acelera e Veículos Definidos por Software viram a bússola da Auto Tech."

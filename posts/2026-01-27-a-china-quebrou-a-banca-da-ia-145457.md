@@ -1,7 +1,7 @@
 ---
 title: "A China Quebrou a Banca da IA?"
 category: "AI"
-image: "images/rdc-cyber-2026-01-27-145457.png"
+image: "images/2026-02-10-rdc-cyber-2026-01-27-145457.png"
 date: "27 jan 2026"
 author: "Cadu Barbosa"
 excerpt: "DeepSeek R1 redefine custos, NVIDIA vira sistema e Trump centraliza poder."

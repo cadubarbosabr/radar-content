@@ -1,7 +1,7 @@
 ---
 title: "A Guerra dos Agentes e o Trono de Silício"
 category: "AI"
-image: "images/rdc-cyber-2026-02-09-122519.png"
+image: "images/2026-02-10-rdc-cyber-2026-02-09-122519.png"
 date: "09 fev 2026"
 author: "Cadu Barbosa"
 excerpt: "OpenAI e Anthropic redefinem autonomia, enquanto NVIDIA toca os US$ 5 Tri."

@@ -1,7 +1,7 @@
 ---
 title: "A MENTIRA sobre a 'detecção' de Ransomware: Novas variantes são invisíveis"
 category: "Cyber"
-image: "images/rdc-cyber-2026-01-27-144545.png"
+image: "images/2026-02-10-rdc-cyber-2026-01-27-144545.png"
 date: "27 jan 2026"
 author: "Cadu Barbosa"
 excerpt: "Novas variantes de ransomware escalam privilégios e evitam detecção, exigindo uma reavaliação urgente das estratégias de defesa do seu SOC (Centro de Operações de Segurança)."

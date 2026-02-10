@@ -1,7 +1,7 @@
 ---
 title: "Sua estratégia de IAM falha quando ignora o que não é humano. No cenário atual de Dezembro de 2025, as 'Super NHIs' são a porta dos fundos escancarada da sua nuvem."
 category: IAM
-image: images/rdc-briefing-2025-12-26-sua-estrat-gia-de-iam-falha-qu.png
+image: images/2026-02-10-rdc-briefing-2025-12-26-sua-estrat-gia-de-iam-falha-qu.png
 date: 25 Dez 2025
 author: Cadu Barbosa
 excerpt: "A Identidade é o novo Perímetro, mas esse perímetro expandiu para APIs e Workloads. A maturidade em Cyber não se mede mais por ferramentas, mas pela governança de identidades efêmeras. IGA e PAM devem convergir urgentemente: trate tokens OAuth como credenciais privilegiadas."
@@ -21,4 +21,4 @@ excerpt: "A Identidade é o novo Perímetro, mas esse perímetro expandiu para A
 
 `#RadarDoCadu` `#IdentitySecurity` `#ZeroTrust` `#NHI` `#CloudSecurity`
 
-![Briefing Image](../images/rdc-briefing-2025-12-26-sua-estrat-gia-de-iam-falha-qu.png)
+![Briefing Image](../images/2026-02-10-rdc-briefing-2025-12-26-sua-estrat-gia-de-iam-falha-qu.png)

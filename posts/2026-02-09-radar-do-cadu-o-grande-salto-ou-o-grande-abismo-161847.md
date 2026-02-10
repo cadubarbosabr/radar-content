@@ -1,7 +1,7 @@
 ---
 title: "Radar do Cadu: O Grande Salto ou o Grande Abismo?"
 category: "Technology"
-image: "images/rdc-cyber-2026-02-09-161847.png"
+image: "images/2026-02-10-rdc-cyber-2026-02-09-161847.png"
 date: "09 fev 2026"
 author: "Cadu Barbosa"
 excerpt: "Por dentro da semana que definiu os trilhões de 2026"
